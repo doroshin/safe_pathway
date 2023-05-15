@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="{{ asset('css/main_style.css') }}">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -14,6 +15,38 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <header>
+    {% block header %}
+                <div class="header_logo">
+                    <a href="{{ path('main_path') }}">Safe Pathway</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('app_main') }}">Main</a></li>
+                        <li><a href="{{ path('main_path') }}">My Pathways</a></li>
+                    </ul>
+                </nav>
+                <button class="green">Login</button>
+        {% endblock %}
+    </header>
+    <div class="center_block_main">
+        <aside>
+            {% block sidebar %}
+                <ul>
+                    <li><a href="{{ path('add_path')}}">Add Safe Path</a></li>
+                </ul>
+            {% endblock %}
+        </aside>
+
+        <main>
+            {% block main_content %}
+                // Main content block
+            {% endblock %}
+        </main>
+    </div>
     </body>
+
+    <footer>
+        Footer!
+    </footer>
 </html>
