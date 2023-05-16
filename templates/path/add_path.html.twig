@@ -1,5 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block main_content %}
-    <h1> Add Pathway </h1>
+    {% block title %}New Pathway{% endblock %}
+
+    {% block body %}
+        <div class="container">
+            <h2 class="text-center mt-5 mb-3">Create Pathway</h2>
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-outline-info float-right" href="{{ path('main_path') }}">
+                        View All Pathways
+                    </a>
+                </div>
+                <div class="card-body">
+                    {{ include('path/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
 {% endblock %}
