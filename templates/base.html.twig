@@ -18,31 +18,39 @@
     </head>
     <body>
     <header>
-    {% block header %}
+        {% block header %}
                 <div class="header_logo">
-                    <a href="{{ path('main_path') }}">Safe Pathway</a>
+                    <a href="{{ path('app_main') }}">Safe Pathway</a>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="{{ path('app_main') }}">Main</a></li>
-                        <li><a href="{{ path('main_path') }}">My Pathways</a></li>
+{#                        <li><a href="{{ path('app_main') }}">Main</a></li>#}
+                        <li><a href="{{ path('main_pathway') }}">My Pathways</a></li>
                     </ul>
                 </nav>
-                <button class="green">Login</button>
+            {% if app.user %}
+                <a class="btn btn-primary" href="{{ path('app_logout') }}">logout</a>
+            {% else %}
+                <a class="btn btn-primary" href="{{ path('app_login') }}">Login</a>
+            {% endif %}
         {% endblock %}
     </header>
     <div class="center_block_main">
         <aside>
             {% block sidebar %}
                 <ul>
-                    <li><a href="{{ path('add_path')}}">Add Safe Path</a></li>
+                    <li><a href="{{ path('add_pathway')}}">Add Safe Path</a></li>
                 </ul>
             {% endblock %}
         </aside>
 
         <main>
             {% block main_content %}
-                // Main content block
+                <div class="container-fluid m-3">
+                    <p><h3>This is an application for storing safe and reliable routes, paths, etc.</h3></p>
+                    <p>Here you can save your proven routes without mines and difficulties.</p>
+                    <p>By adding coordinates step by step you can build safe trails.</p>
+                </div>
             {% endblock %}
         </main>
     </div>

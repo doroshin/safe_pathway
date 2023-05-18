@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SP - Pathway({{ pathway.title }}){% endblock %}
+{% block main_content %}
+    <div class="container">
+        <a class="btn btn-outline-success mt-3 mb-3" href="{{ path('edit_pathway', {'id': pathway.id}) }}">Edit</a>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">{{ pathway.title }}</h2>
+            </div>
+            <div class="card-body">
+                <b class="text-muted">Name:</b>
+                <p>{{ pathway.title }}</p>
+                <b class="text-muted">Region:</b>
+                <p>{{ pathway.region }}</p>
+                <b class="text-muted">Date Created:</b>
+                <p>{{ pathway.getCreatedAt()|date('Y-m-d H:i:s') }}</p>
+                <b class="text-muted">Date Updated:</b>
+                <p>{{ pathway.getUpdatedAt() == 0 ? '-' : pathway.getUpdatedAt()|date('Y-m-d H:i:s')}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
